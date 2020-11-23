@@ -24,18 +24,12 @@ if(strlen($_SESSION['ulogin'])==0)
 					$email=$_SESSION['ulogin'];
 					$total = 0;
 //insert
-					$sql = "INSERT INTO booking (total,nama_acara, tgl_acara, status,email)
-							VALUES('$total','$nama_acara','$tgl_acara','$status','$email')";
+					$sql = "INSERT INTO booking (id_booking, nama_acara, tgl_acara, status,email, total_biaya)
+							VALUES(NULL,'$nama_acara','$tgl_acara','$status','$email','$total')";
 					$query = mysqli_query($koneksidb,$sql);
 
-							$i=0;
-							foreach($i_id as &$item_id)
-								{
-									$sql2 = "INSERT INTO booking_detail ( id_booking, id_item)
-											VALUES ('$kode','$id[$i]')";
-									$query2 = mysqli_query($koneksidb,$sql2);
-									$i++;
-								}
+						//if $query , insert juga ke tabel booking_detail
+
 
 							echo " <script> alert ('Berhasil melakukan pemesanan.'); </script> ";
 							echo "<script type='text/javascript'> document.location = 'riwayatsewa.php'; </script>";
